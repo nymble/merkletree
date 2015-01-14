@@ -4,7 +4,7 @@
     This Merkle Tree Implementation is roughly aligned to the notation and
     hash method of: draft-laurie-pki-sunlight-02.txt 
        
-    Merkle Tree Examples and Algorithms
+    Merkle Tree Examples and Algorithms 
     
            0,3              0,4        
           __|__            __|__ 

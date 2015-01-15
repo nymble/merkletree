@@ -166,28 +166,7 @@ def largestPower2(n):
 
 # ------------------------------------------------------------------------------
 # Self test
-def main():
-    """ test / demo of building a tree and testing all audit paths
-    """        
-    mht = MerkleHashTree()        
-    
-    for m in range(0, 999): # add leaves to tree
-        mht.addLeaf( "This is a leaf string {}".format( m ) )
-        leaf = mht.leafHash(m)
-        path = mht.auditPath(m)
-        root = mht.rootHash(mht.size)
-        assert mht.validPath(m, mht.size, leaf, root, path)
 
-        path_list = ''.join(['\n    - {}'.format( h.encode('hex')) for h in path])
-        print audit_proof.format(m, leaf.encode('hex'), path_list, root.encode('hex'))
-             
-audit_proof = """--- audit proof
-m:    {}
-leaf: {}
-path: {}
-root: {}"""
-
-# ---- unit tests ----
 import unittest
 
 class TestMerkleTree(unittest.TestCase):
@@ -195,22 +174,32 @@ class TestMerkleTree(unittest.TestCase):
     def test_mht(self):
         """ Create and validate all paths for all trees up to size 99 """
         mht = MerkleHashTree()
-        for n in range(0,99):
-            mht.addLeaf( 'this is leaf {}'.format(n) )
-        
+        for i in range(0, 99):
+            mht.addLeaf( 'this is leaf {}'.format(i) )
+            n = len(mht) # should just be i+1
+            
             # check audit path for every entry
-            for i in range( len(mht) ):
-                leaf = mht.leafHash(i)
-                path = mht.auditPath( i )
-                n = len(mht)
+            for m in range( n ):
+                leaf = mht.leafHash(m)
+                path = mht.auditPath(m)
                 root = mht.rootHash()
                 
                 # validate path
-                isValid = mht.validPath(i, n, leaf, root, path)
+                isValid = mht.validPath(m, n, leaf, root, path)
                 self.assertTrue( isValid )
 
+                # gratitous display of the audit path
+                path_list = ''.join(['\n    - {}'.format( h.encode('hex')) for h in path])
+                print audit_proof.format(m, n, leaf.encode('hex'), path_list, root.encode('hex'))
+
+audit_proof = """--- audit proof
+m:    {}
+n:    {}
+leaf: {}
+path: {}
+root: {}"""
+
 if __name__ == "__main__":
-    main()
     unittest.main()
 
 

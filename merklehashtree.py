@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """ merklehashtree.py
    
-    This Merkle Tree Implementation is roughly aligned to the notation and
+    This Merkle Hash Tree Implementation is roughly aligned to the notation and
     hash method of: draft-laurie-pki-sunlight-02.txt 
        
     Merkle Tree Examples and Algorithms 

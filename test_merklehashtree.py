@@ -4,7 +4,13 @@
     Unit test for merklehashtree.py
     Prints output of all audit paths for a tree with 99 entries
     
-    Copyright Paul A. Lambert 2015
+    test_merklehashtree.py (c) by Paul A. Lambert
+
+    test_merklehashtree.py is licensed under a
+    Creative Commons Attribution 4.0 International License.
+
+    You should have received a copy of the license along with this
+    work. If not, see <http://creativecommons.org/licenses/by/4.0/>. 
 """
 from merklehashtree import MerkleHashTree
 import unittest

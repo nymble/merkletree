@@ -4,7 +4,7 @@
     This Merkle Hash Tree Implementation is roughly aligned to the notation and
     hash method of: draft-laurie-pki-sunlight-02.txt 
        
-    Merkle Tree Examples and Algorithms 
+    Merkle Hash Tree Examples and Algorithms 
     
            0,3              0,4        
           __|__            __|__ 
@@ -57,15 +57,20 @@
    The audit path for d4 is [mth(5,6), mth(6,7), mth(0,4)]
    The audit path for d6 is [mth(4,6), mth(0,4)]
 
-   Copyright (c) 2012 Paul A. Lambert, All Rights Reserved.  
+   merklehashtree.py (c) by Paul A. Lambert
+
+   merklehashtree.py is licensed under a
+   Creative Commons Attribution 4.0 International License.
+
+   You should have received a copy of the license along with this
+   work. If not, see <http://creativecommons.org/licenses/by/4.0/>. 
+   
    2012-12-12 First Version
 """
-from hashlib import sha256
+from hashlib import sha256 # Default hash algorithm
 
 class MerkleHashTree():
-    """  Merkle Hash Tree
-    """
-    _hashalg = sha256     # default hash algorithm
+    """  Merkle Hash Tree """
     
     def addLeaf(self, string):
         """ Create a new leaf node for the string 'd' """
@@ -134,10 +139,10 @@ class MerkleHashTree():
             
     def hash(self, input):
         """ Wrapper for hash functions """
-        # return "({})".format(input)
         return self._hashalg(input).digest()
      
-    def __init__(self):
+    def __init__(self, HashAlg = sha256):
+        self._hashalg = HashAlg
         self.size = 0 # number of leaf nodes in tree
         self._inittree()   # create empty mht
         

@@ -34,7 +34,7 @@ class TestMerkleTree(unittest.TestCase):
                 isValid = mht.validPath(m, n, leaf, root, path)
                 self.assertTrue( isValid )
 
-                # gratitous display of the audit path
+                # gratuitous display of the audit path
                 path_list = ''.join(['\n    - {}'.format( h.encode('hex')) for h in path])
                 print audit_proof.format(m, n, leaf.encode('hex'), path_list, root.encode('hex'))
 

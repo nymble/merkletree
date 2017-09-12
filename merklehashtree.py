@@ -5,15 +5,19 @@
     hash method of: draft-laurie-pki-sunlight-02.txt 
        
     Merkle Hash Tree Examples and Algorithms 
-    
-           0,3              0,4        
-          __|__            __|__ 
-         /     \          /     \
-       0,2     2,3      0,2     2,4
-      /   \     |       / \     / \
-    0,1   1,2  d2     0,1 1,2 2,3 3,4
-     |     |           |   |   |   |
-    d0    d1          d0  d1  d2  d3
+
+
+                                                0,5
+                                               __|__
+                                              /     \
+           0,3            0,4               0,4     4,5   
+          __|__          __|__             __|__     |
+         /     \        /     \           /     \   d4
+       0,2     2,3    0,2     2,4       0,2     2,4
+      /   \     |     / \     / \       / \     / \
+    0,1   1,2  d2   0,1 1,2 2,3 3,4   0,1 1,2 2,3 3,4
+     |     |         |   |   |   |     |   |   |   |
+    d0    d1        d0  d1  d2  d3    d0  d1  d2  d3
 
    Each node in the tree can be identified as a tuple representing the range
    of values covered by the hash.
@@ -33,12 +37,12 @@
       creating a leaf node
         mth(i,i+1) = hash( 0 | d(i))
     - root hash is calculated when needed by:
-        mth(0,i+1) = hash( 1 + smth(k1,k) + self.mth(k,k2))
+        mth(0,i+1) = hash( 1 + mth(k1,k) + mth(k,k2))
         and recursively creating any mth(i,j) needed for the new root hash
     - an empty tree has a root hash value formed by hashing
       a null string, hash('')
       
-
+      
                   0,7
              ______|______
             /             \   

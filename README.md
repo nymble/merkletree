@@ -1,7 +1,7 @@
 # A Python implementation and test code of the Merkle Hash Tree Algorithm
-   
-    This Merkle Hash Tree Implementation is roughly aligned to the notation and
-    hash method of: draft-laurie-pki-sunlight-02.txt 
+
+This Merkle Hash Tree Implementation is roughly aligned to the notation and
+hash method of: https://tools.ietf.org/html/draft-laurie-pki-sunlight-02 
        
 ## Merkle Hash Tree Examples and Algorithms 
                                                 0,5

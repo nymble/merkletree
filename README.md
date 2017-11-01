@@ -1,5 +1,7 @@
 # Merkle Hash Trees 
 
+An implementation of a binary Merkle Hash Tree.
+
                                                 0,5
                                                __|__
                                               /     \
@@ -51,5 +53,4 @@ For a merkle tree with a root value mth(0,7) ( a tree with seven entries), the a
 - The audit path for d4 is [mth(5,6), mth(6,7), mth(0,4)]
 - The audit path for d6 is [mth(4,6), mth(0,4)]
 
-This Merkle Hash Tree implementation is roughly aligned to the notation and
-hash method of: https://tools.ietf.org/html/draft-laurie-pki-sunlight-02 
+This implementation is based on the specifics of the algorithm described in: https://tools.ietf.org/html/draft-laurie-pki-sunlight-02 

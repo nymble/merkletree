@@ -1,9 +1,4 @@
-# A Python implementation and test code of the Merkle Hash Tree Algorithm
-
-This Merkle Hash Tree Implementation is roughly aligned to the notation and
-hash method of: https://tools.ietf.org/html/draft-laurie-pki-sunlight-02 
-       
-## Merkle Hash Tree Examples and Algorithms 
+# Merkle Hash Trees 
 
                                                 0,5
                                                __|__
@@ -54,3 +49,6 @@ identified by mth(i,j):
 - The audit path for d3 is [mth(2,3), mth(0,2), mth(4,7)]
 - The audit path for d4 is [mth(5,6), mth(6,7), mth(0,4)]
 - The audit path for d6 is [mth(4,6), mth(0,4)]
+
+This Merkle Hash Tree implementation is roughly aligned to the notation and
+hash method of: https://tools.ietf.org/html/draft-laurie-pki-sunlight-02 

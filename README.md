@@ -33,17 +33,18 @@ identified by mth(i,j):
 - the root hash, MTH = mth(0,n)
 - the leaf hash for data entry di with 0<=i<n is mth(i,i+1)
 - leaf values are formed by hashing the input string d(i)
-        mth(i,i+1) = hash( 0 | d(i))
-        This is a hash of the single octet with value 0 concatenated with the ith input string d(i)
+  - mth(i,i+1) = hash( 0 | d(i))
+  - This is a hash of the single octet with value 0 concatenated with the ith input string d(i)
 - every non-leaf node mth(k1,k2) has the property that
-        mth(k1,k2) = hash( 1 | mth(k1,k1+k) | mth(k1+k,k2) )
-        where k = k1+lp2(k2-k1) , and lp2 is the largest power of 2 < (k2-k1)
+  - mth(k1,k2) = hash( 1 | mth(k1,k1+k) | mth(k1+k,k2) )
+  - where k = k1+lp2(k2-k1) , and lp2 is the largest power of 2 < (k2-k1)
 - new entries are added to the tree by creating a leaf node:
-      mth(i,i+1) = hash( 0 | d(i))
+  - mth(i,i+1) = hash( 0 | d(i))
 - root hash is calculated when needed by:
-        mth(0,i+1) = hash( 1 + mth(k1,k) + mth(k,k2))
-        and recursively creating any mth(i,j) needed for the new root hash
+  - mth(0,i+1) = hash( 1 + mth(k1,k) + mth(k,k2)) and recursively creating any mth(i,j) needed for the new root hash
 - an empty tree has a root hash value formed by hashing a null string, hash('')
+
+For a merkle tree with a root value mth(0,7) ( a tree with seven entries), the audit paths are:
 
 - The audit path for d0 is [mth(1,2), mth(2,4), mth(4,7)]
 - The audit path for d3 is [mth(2,3), mth(0,2), mth(4,7)]
